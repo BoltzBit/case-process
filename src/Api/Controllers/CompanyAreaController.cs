@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace Api.Controllers;
 
 [ApiController]
-[Route("area")]
-public class AreaController : ControllerBase
+[Route("company-area")]
+public class CompanyAreaController : ControllerBase
 {
     [HttpGet]
     public async Task<IActionResult> GetByIdAsync()
