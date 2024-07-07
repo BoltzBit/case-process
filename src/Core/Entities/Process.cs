@@ -4,12 +4,16 @@ namespace CaseProcess.Core.Entities;
 
 public class Process : BaseEntity
 {
+    public int CompanyAreaId { get; private set; }
     public string Name { get; private set; }
     public bool IsActive { get; private set; }
     public int? ParentId { get; private set; }
+    public CompanyArea? CompanyArea { get; private set; }
+    public Process? Parent { get; private set; }
     public IEnumerable<Process> SubProcesses { get; set; } = [];
 
     public Process(
+        int companyAreaId,
         string name,  
         int? parentId,
         bool isAactive = true)
@@ -19,7 +23,8 @@ public class Process : BaseEntity
                 name, 
                 Constants.FIELD_MAX_LENGTH_NAME, 
                 $"The name of Process must be less then {Constants.FIELD_MAX_LENGTH_NAME}");
-
+                
+        CompanyAreaId = companyAreaId;
         Name = name;
         IsActive = isAactive;
         ParentId = parentId ?? null;
