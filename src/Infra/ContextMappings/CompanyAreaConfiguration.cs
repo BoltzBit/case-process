@@ -15,6 +15,6 @@ public class CompanyConfiguration : IEntityTypeConfiguration<CompanyArea>
             .HasColumnName("Name")
             .IsRequired();
 
-        builder.ToTable("Company", "Area");
+        builder.ToTable("Area", "Company");
     }
 }

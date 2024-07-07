@@ -24,6 +24,10 @@ public class ProcessConfiguration : IEntityTypeConfiguration<Process>
             .WithMany(v => v.SubProcesses)
             .HasForeignKey(u => u.ParentId);
 
-        builder.ToTable("Company", "Process");
+        builder.HasOne(p => p.CompanyArea)
+            .WithMany(p => p.Processes)
+            .HasForeignKey(p => p.CompanyAreaId);
+
+        builder.ToTable("Process", "Company");
     }
 }
