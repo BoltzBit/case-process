@@ -1,6 +1,6 @@
-using Process.Core.DomainObjects;
+using CaseProcess.Core.DomainObjects;
 
-namespace Process.Core.Entities;
+namespace CaseProcess.Core.Entities;
 
 public class Process : BaseEntity
 {

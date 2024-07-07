@@ -1,4 +1,4 @@
-namespace Process.Core.DomainObjects;
+namespace CaseProcess.Core.DomainObjects;
 
 public class Validations
 {
