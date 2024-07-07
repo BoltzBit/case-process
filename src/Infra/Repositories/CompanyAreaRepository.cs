@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using CaseProcess.Core.Entities;
+﻿using CaseProcess.Core.Entities;
+using CaseProcess.Infra.Context;
 
-namespace CaseProcess.Infra.Context;
+namespace CaseProcess.Infra.Repositories;
 
 public class CompanyAreaRepository : ProcessDbRepository<CompanyArea>, ICompanyAreaRepository
 {

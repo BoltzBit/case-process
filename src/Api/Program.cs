@@ -1,4 +1,5 @@
 using CaseProcess.Infra.Context;
+using CaseProcess.Infra.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,9 @@ else
 {
     throw new Exception("Connection String not found");
 }
+
+builder.Services.AddScoped<ICompanyAreaRepository, CompanyAreaRepository>();
+builder.Services.AddScoped<IProcessRepository, ProcessRepository>();
 
 
 builder.Services.AddControllers();
