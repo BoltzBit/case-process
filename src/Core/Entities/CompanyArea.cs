@@ -5,19 +5,28 @@ namespace CaseProcess.Core.Entities;
 public class CompanyArea : BaseEntity
 {
     public string Name { get; private set; }
+    public string Description { get; private set; }
     public bool IsActive { get; private set; }
     public IEnumerable<Process> Processes { get; set; } = [];
 
     public CompanyArea(
         string name,
+        string description,
         bool isActive = true)
     {
         Validations
             .SizeValidation(
                 name, 
                 Constants.FIELD_MAX_LENGTH_NAME,
-                $"The name of Process must be less then {Constants.FIELD_MAX_LENGTH_NAME}");
+                $"The name of Company Area must be less then {Constants.FIELD_MAX_LENGTH_NAME}");
 
+        Validations
+            .SizeValidation(
+                name, 
+                Constants.FIELD_MAX_LENGTH_DESCRIPTION,
+                $"The description of Company Area must be less then {Constants.FIELD_MAX_LENGTH_DESCRIPTION}");
+        
+        Description = description;
         Name = name;
         IsActive = isActive;
     }

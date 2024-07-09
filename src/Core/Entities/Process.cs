@@ -6,6 +6,7 @@ public class Process : BaseEntity
 {
     public int CompanyAreaId { get; private set; }
     public string Name { get; private set; }
+    public string Description { get; private set; }
     public bool IsActive { get; private set; }
     public int? ParentId { get; private set; }
     public CompanyArea? CompanyArea { get; private set; }
@@ -15,6 +16,7 @@ public class Process : BaseEntity
     public Process(
         int companyAreaId,
         string name,  
+        string description,
         int? parentId,
         bool isAactive = true)
     {
@@ -23,9 +25,16 @@ public class Process : BaseEntity
                 name, 
                 Constants.FIELD_MAX_LENGTH_NAME, 
                 $"The name of Process must be less then {Constants.FIELD_MAX_LENGTH_NAME}");
+
+        Validations
+            .SizeValidation(
+                description, 
+                Constants.FIELD_MAX_LENGTH_DESCRIPTION, 
+                $"The description of Process must be less then {Constants.FIELD_MAX_LENGTH_DESCRIPTION}");
                 
         CompanyAreaId = companyAreaId;
         Name = name;
+        Description = description;
         IsActive = isAactive;
         ParentId = parentId ?? null;
     }
