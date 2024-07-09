@@ -1,5 +1,6 @@
 using CaseProcess.Infra.Context;
 using CaseProcess.Infra.Repositories;
+using CaseProcess.Application.Features.Commands;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,8 @@ else
 {
     throw new Exception("Connection String not found");
 }
+
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(CreateCompanyAreaCommandHandler).Assembly));
 
 builder.Services.AddScoped<ICompanyAreaRepository, CompanyAreaRepository>();
 builder.Services.AddScoped<IProcessRepository, ProcessRepository>();
