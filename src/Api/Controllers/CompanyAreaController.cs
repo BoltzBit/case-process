@@ -1,10 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
+using MediatR;
+using CaseProcess.Application.Features.Commands;
 
 namespace Api.Controllers;
 
 [ApiController]
 [Route("company-area")]
-public class CompanyAreaController : ControllerBase
+public class CompanyAreaController(IMediator mediator) : ControllerBase
 {
     [HttpGet]
     public async Task<IActionResult> GetByIdAsync()
@@ -19,9 +21,9 @@ public class CompanyAreaController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateAsync()
+    public async Task<IActionResult> CreateAsync([FromBody] CreateCompanyAreaCommand command)
     {
-        return Ok("ok");
+        return Ok(await mediator.Send(command));
     }
 }
 

@@ -1,3 +1,4 @@
+using CaseProcess.Application.Services;
 using MediatR;
 
 namespace CaseProcess.Application.Features.Commands;
@@ -10,10 +11,20 @@ public class CreateCompanyAreaCommand : IRequest<bool>
 
 public class CreateCompanyAreaCommandHandler : IRequestHandler<CreateCompanyAreaCommand, bool>
 {
+    private readonly ICompanyAreaService _companyAreaService;
+
+    public CreateCompanyAreaCommandHandler(
+        ICompanyAreaService companyAreaService)
+    {
+        _companyAreaService = companyAreaService;
+    }
+
     public async Task<bool> Handle(
         CreateCompanyAreaCommand request,
         CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        await _companyAreaService.InsertAsync(request);
+
+        return true;
     }
 }

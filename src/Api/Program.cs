@@ -1,6 +1,7 @@
 using CaseProcess.Infra.Context;
 using CaseProcess.Infra.Repositories;
 using CaseProcess.Application.Features.Commands;
+using CaseProcess.Application.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,11 +19,12 @@ else
     throw new Exception("Connection String not found");
 }
 
-builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(CreateCompanyAreaCommandHandler).Assembly));
-
 builder.Services.AddScoped<ICompanyAreaRepository, CompanyAreaRepository>();
 builder.Services.AddScoped<IProcessRepository, ProcessRepository>();
 
+builder.Services.AddScoped<ICompanyAreaService, CompanyAreaService>();
+
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(CreateCompanyAreaCommandHandler).Assembly));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
