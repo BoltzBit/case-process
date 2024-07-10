@@ -3,17 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 namespace Api.Controllers;
 
 [ApiController]
-[Route("area")]
+[Route("process")]
 public class ProcessController : ControllerBase
 {
     [HttpGet]
     public async Task<IActionResult> GetByIdAsync()
-    {
-        return Ok("ok");
-    }
-
-    [HttpGet]
-    public async Task<IActionResult> GetAllAsync()
     {
         return Ok("ok");
     }

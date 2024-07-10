@@ -1,7 +1,9 @@
 using CaseProcess.Infra.Context;
 using CaseProcess.Infra.Repositories;
 using CaseProcess.Application.Features.Commands;
+using CaseProcess.Application.Features.Queries;
 using CaseProcess.Application.Services;
+using CaseProcess.Application.Mappings;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,7 +26,10 @@ builder.Services.AddScoped<IProcessRepository, ProcessRepository>();
 
 builder.Services.AddScoped<ICompanyAreaService, CompanyAreaService>();
 
+builder.Services.AddAutoMapper(typeof(CompanyAreaMapping));
+
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(CreateCompanyAreaCommandHandler).Assembly));
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(GetAllCompanyAreaQueryHandler).Assembly));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
