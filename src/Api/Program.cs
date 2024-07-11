@@ -25,11 +25,15 @@ builder.Services.AddScoped<ICompanyAreaRepository, CompanyAreaRepository>();
 builder.Services.AddScoped<IProcessRepository, ProcessRepository>();
 
 builder.Services.AddScoped<ICompanyAreaService, CompanyAreaService>();
+builder.Services.AddScoped<IProcessService, ProcessService>();
 
 builder.Services.AddAutoMapper(typeof(CompanyAreaMapping));
 
+//Commands
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(CreateCompanyAreaCommandHandler).Assembly));
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(CreateProcessCommandHandler).Assembly));
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(GetAllCompanyAreaQueryHandler).Assembly));
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(GetAllProcessQueryHandler).Assembly));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
