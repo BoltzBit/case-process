@@ -20,7 +20,8 @@ public class CompanyAreaService : ICompanyAreaService
         
         if(companyArea is not null)
         {
-            throw new Exception("Already Exist the company area with the same Name and Description!");
+            throw new Exception(
+                $"Already Exist the company area with the same Name: {command.Name} and Description: {command.Description}!");
         }
 
         companyArea = new CompanyArea(

@@ -30,10 +30,9 @@ public class GetAllCompanyAreaQueryHandler :
         CancellationToken cancellationToken)
     {
         var companyAreas = await _companyAreaRepository
-            .GetAll()
-            .ToListAsync(cancellationToken);
+            .GetAllWithIncludeAsync();
 
-        if(companyAreas.Count == 0)
+        if(!companyAreas.Any())
         {
             return Enumerable.Empty<CompanyAreaModel>();
         }

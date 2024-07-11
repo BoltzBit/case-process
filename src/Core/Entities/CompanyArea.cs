@@ -7,7 +7,7 @@ public class CompanyArea : BaseEntity
     public string Name { get; private set; }
     public string Description { get; private set; }
     public bool IsActive { get; private set; }
-    public IEnumerable<Process> Processes { get; set; } = [];
+    public IEnumerable<Process> Processes { get; private set; } = new List<Process>();
 
     public CompanyArea(
         string name,
@@ -32,6 +32,6 @@ public class CompanyArea : BaseEntity
     }
 
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
-    protected CompanyArea(){}
+    public CompanyArea(){}
 #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
 }

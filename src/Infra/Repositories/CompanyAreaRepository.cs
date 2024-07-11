@@ -10,6 +10,13 @@ public class CompanyAreaRepository : ProcessDbRepository<CompanyArea>, ICompanyA
     {
     }
 
+    public async Task<IEnumerable<CompanyArea>> GetAllWithIncludeAsync()
+    {
+        return await Table
+            .Include(c => c.Processes)
+            .ToListAsync();
+    }
+
     public async Task<CompanyArea?> GetByNameAndDescriptionAsync(string name, string description)
     {
         return await Table

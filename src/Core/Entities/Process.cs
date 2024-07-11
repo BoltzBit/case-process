@@ -11,7 +11,7 @@ public class Process : BaseEntity
     public int? ParentId { get; private set; }
     public CompanyArea? CompanyArea { get; private set; }
     public Process? Parent { get; private set; }
-    public IEnumerable<Process> SubProcesses { get; set; } = [];
+    public IEnumerable<Process> SubProcesses { get; private set; } = new List<Process>();
 
     public Process(
         int companyAreaId,

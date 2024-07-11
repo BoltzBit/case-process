@@ -27,7 +27,8 @@ public class ProcessConfiguration : IEntityTypeConfiguration<Process>
 
         builder.HasOne(p => p.CompanyArea)
             .WithMany(p => p.Processes)
-            .HasForeignKey(p => p.CompanyAreaId);
+            .HasForeignKey(p => p.CompanyAreaId)
+            .IsRequired();
 
         builder.ToTable("Process", "Company");
     }
